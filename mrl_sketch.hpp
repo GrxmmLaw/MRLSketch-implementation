@@ -9,14 +9,14 @@ using namespace std;
 
 class MRLSketch {
 private:
-    int n;          
+    long long n;          
     double epsilon; 
     int k;         
     int L;         
     vector<vector<int>> compactors; 
 public:
 
-    MRLSketch(int n_val, const string& flow, double eps_val) : epsilon(eps_val), n(n_val) {
+    MRLSketch(long long n_val, const string& flow, double eps_val) : epsilon(eps_val), n(n_val) {
         
         // Cálculo del valor de k
         double raw_k = (1.0 / epsilon) * log2(epsilon * n);
@@ -27,6 +27,8 @@ public:
         // Cálculo del valor de L y del número de compactadores:
         L = (int)ceil(log2((double)n / k));
         compactors.resize(L+1); 
+
+        this->n = 0;
     
         // Parsear texto e insertar a los compactadores:
         ifstream file(flow);
